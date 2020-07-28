@@ -12,50 +12,7 @@ P.S. Здесь есть несколько вариантов решения з
 
 "use strict";
 
-// document.addEventListener("DOMContentLoaded", () => { //событие когда дом структура будет построенна(будет раюотать весь наш скрипт) чтоб не ждать например картинкок которые весят очень много, не будет же пользователь ждать пока загрузятся все картинку и т.д.
-//     const movieDB = {
-//         movies: [
-//             "Логан",
-//             "Лига справедливости",
-//             "Ла-ла лэнд",
-//             "Одержимость",
-//             "Скотт Пилигрим против..."
-//         ]
-//     };
 
-//     let promo = document.querySelectorAll("img[alt='some picture']"),
-//         promoBg = document.querySelector(".promo__bg"),
-//         promoGenre = promoBg.querySelector(".promo__genre"),
-//         movieList = document.querySelector(".promo__interactive-list"),
-//         formAdd = document.querySelector("form.add"),
-//         inputAdd = formAdd.querySelector(".adding__input"),
-//         checkbox = formAdd.querySelector("type=['checkbox']");
-
-//     for (let i of promo) {
-//         i.remove();
-//     }
-
-//     promoGenre.textContent = "Драма";
-
-//     promoBg.style.background = "url('img/bg.jpg') center center/cover no-repeat";
-
-//     movieDB.movies.sort();
-
-//     function createMovieList(films, parent) {
-//         parent.innerHTML = "";
-
-//         films.forEach((film, i) => {
-//             parent.innerHTML += `
-//             <li class="promo__interactive-item">${i+1} ${film}
-//                 <div class="delete"></div>
-//             </li>
-//             `;
-//         });
-//     }
-
-//     createMovieList(movieDB.movies, movieList);
-
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
     /* событие когда дом структура будет построенна(будет раюотать весь наш скрипт) чтоб не ждать например картинкок которые весят очень много, не будет же пользователь ждать пока загрузятся все картинку и т.д.*/
@@ -78,14 +35,29 @@ document.addEventListener("DOMContentLoaded", () => {
         addInput = addForm.querySelector(".adding__input"),
         checkbox = addForm.querySelector("[type='checkbox']");
 
-
+/* 1. */
     addForm.addEventListener("submit", (event) => { //обработчик события submit,чтобы отследить отправку формы
         event.preventDefault();
 
-        const newFilm = addInput.value;
+        let newFilm = addInput.value;
         const favorite = checkbox.checked;
 
-        if (newFilm) {                    //Вспомни динамическу типизацию, пустота это false, а значит в value если 
+        if (newFilm) {       
+            
+            /* 2. */
+            if (newFilm.length > 20) {
+                newFilm = `${newFilm.substring(0, 20)}...`;
+                console.log(newFilm);
+                console.log(newFilm.length);
+            }
+
+            /* 3. */
+            if (favorite) {
+                console.log(`Добавлен любисый фильм ${newFilm}`);
+            }
+
+
+                                        //Вспомни динамическу типизацию, пустота это false, а значит в value если 
             movieDB.movies.push(newFilm); // пукстая строка, то ничего не отправится
             sortArr(movieDB.movies);
 
@@ -97,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     });
+
+    
 
     const deleteAdv = (arr) => {
         arr.forEach((item) => {
@@ -116,7 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const createMovieList = (films, parent) => {
-        parent.innerHTML = "";
+        parent.innerHTML = "";   //чтоб при повторном написании этой функции добавлялось по одному, а не весть массив
+
+        /* 4. */
+        sortArr(films); //у нас отсортированный список по алфавиту, и чтоб при удалении сортировка тоже учитывалась
+
         films.forEach((film, i) => {
             parent.innerHTML += `
             <li class="promo__interactive-item">${i + 1} ${film}  
@@ -124,10 +102,23 @@ document.addEventListener("DOMContentLoaded", () => {
             </li>
             `;
         });
+
+/*3. пишем удаление в createMovieList потомучто у нас же в этой переменной лежит наша HTML структура списка */
+        document.querySelectorAll(".delete").forEach((item, i) => {  //Удаляем элементы из списка, и удаляем из массива
+            item.addEventListener("click", () => {
+                item.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+
+                createMovieList(films, parent); //Это способ называется рекурсией, когда функция вызывает саму себя. Это для того чтоб при удалении наш массив заново построился, с новом нумерацией
+            });
+        });
     };
+
+    
 
     deleteAdv(adv);
     makeChanges();
-    sortArr(movieDB.movies);
+   
     createMovieList(movieDB.movies, movieList);
 });
+

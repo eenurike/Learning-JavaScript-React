@@ -1,27 +1,45 @@
 "use strict";
 
-console.log(document.body.childNodes);
+let appData = {
+    key: [
+        "nurike 1",
+        "nurike 2",
+        "nurike 3",
+        "nurike 4",
+    ]
+};
 
-console.log(document.body.firstChild);
-console.log(document.body.lastChild);
+let list = document.querySelector("ul"),
+    addForm = document.querySelector("form.add"),
+    textForm = addForm.querySelector("input[type='text']"),
+    addText = addForm.querySelector("input[type='submit']");
+    
+    
 
-console.log(document.body.querySelector("#current").parentNode);
-document.body.querySelector("#current").parentNode.parentNode.style.cssText = "max-width: 900px; margin: 0 auto; background: lightgreen";
 
 
-console.log(document.querySelector("ul").childNodes);
-console.log(document.querySelector("[data-current = '3']").nextSibling);
-console.log(document.querySelector("[data-current = '3']").previousSibling);
-console.log(document.querySelector("[data-current = '3'").nextElementSibling);
-console.log(document.querySelector("[data-current = '3']").previousElementSibling);
+    addForm.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-console.log(document.querySelector("#current").parentElement.parentElement);
-console.log("----");
+        let text = textForm.value;
 
-for (let i of document.body.childNodes) {
-    if (i.nodeName == "#text") {
-        continue;
-    }
+        if (textForm) {
+            appData.key.push(text);
 
-    console.log(i);
-}
+            createList(appData.key, list);
+        }
+
+        event.target.reset();
+        console.log(appData.key);
+    });
+
+let createList = (onwData, ownList) => {
+    ownList.innerHTML = "";
+    onwData.forEach((item, i) => {
+        ownList.innerHTML += `
+            <li>${i+1} ${item}</li>
+        `;
+    });
+};
+
+createList(appData.key, list);
