@@ -1,45 +1,16 @@
 "use strict";
 
-let appData = {
-    key: [
-        "nurike 1",
-        "nurike 2",
-        "nurike 3",
-        "nurike 4",
-    ]
-};
+document.addEventListener("DOMContentLoaded", () => {
+    let box = document.querySelector(".box");
+    console.log(box);
 
-let list = document.querySelector("ul"),
-    addForm = document.querySelector("form.add"),
-    textForm = addForm.querySelector("input[type='text']"),
-    addText = addForm.querySelector("input[type='submit']");
-    
-    
+    // box.addEventListener("touchstart", (event) => {
+    //     event.preventDefault();
+    //     console.log("start");
+    //     console.log(event.touches);
+    // });
 
-
-
-    addForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        let text = textForm.value;
-
-        if (textForm) {
-            appData.key.push(text);
-
-            createList(appData.key, list);
-        }
-
-        event.target.reset();
-        console.log(appData.key);
+    box.addEventListener("touchmove", (event) => {
+        console.log(event.targetTouches[0].pageX);  //[0] это один ралец, типа вилим координаты перемещения пальлца. и можно сделать  чтоб с какогото координата например перелистывался слайд
     });
-
-let createList = (onwData, ownList) => {
-    ownList.innerHTML = "";
-    onwData.forEach((item, i) => {
-        ownList.innerHTML += `
-            <li>${i+1} ${item}</li>
-        `;
-    });
-};
-
-createList(appData.key, list);
+});
