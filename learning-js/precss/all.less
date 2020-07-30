@@ -1,14 +1,30 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+// * {
+// 	margin: 0;
+// 	padding: 0;
+// 	box-sizing: border-box;
+// }
 
-.box {
-	width: 100px;
-	height: 100px;
+.btn-block {
+	display: inline-block;
+	padding: 40px;
 	background-color: lightpink;
-	border-radius: 20px;
-	padding: 10px;
-	margin: 50px;
+	display: inline-flex;
+
+	button {
+		width: 60px;
+		height: 30px;
+		background-color: lightslategray;
+		border-radius: 7px;
+		display: block;
+		border: none;
+		margin-right: 10px;
+
+		&.blue {
+			background-color: lightblue;
+		}
+
+		&.red {
+			background-color: red;
+		}
+	}
 }
