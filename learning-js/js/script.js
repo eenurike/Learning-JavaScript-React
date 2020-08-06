@@ -1,57 +1,38 @@
 "use strict";
 
-let btns = document.querySelectorAll("button"),
-    wrapper = document.querySelector(".btn-block");
+let tabsContent = document.querySelectorAll(".tabs__content"),
+    tabs = document.querySelectorAll(".tabs__item"),
+    tabsParent = document.querySelector(".tabs__item-wrapper");
 
-    // wrapper.addEventListener("click", (event ) => {
-    //     if(event.target && event.target.tagName == "BUTTON") {
-    //         event.target.classList.toggle("red");
-    //     }
-    //     let addBtn = document.createElement("button");
-    //     addBtn.classList.add("red");
-    // wrapper.append(addBtn);
-    //     // if(event.target && event.target.classList.contains("blue")){
-    //     //     event.target.classList.toggle("red");
-    //     // }
-    //     // console.dir(event.target);
-
-    // }) ;
-    
-    btns.forEach((item) => {
-        item.addEventListener("click", () => {
-            console.log("work");      
-        });
+function hideTabContent() {
+    tabsContent.forEach(item => {
+        item.classList.add("hide");
+        item.classList.remove("show");
     });
 
-    let btn = document.createElement("button");
-    btn.classList.add("red");
-    wrapper.append(btn);
+    tabs.forEach(item => {
+        item.classList.remove("tabs__item-active");
+    });
+}  
 
-    
-    
+function showTabContent(i = 0) {
+    tabsContent[i].classList.add("show");
+    tabsContent[i].classList.remove("hide");
+    tabs[i].classList.add("tabs__item-active");
+}
 
-// console.log(btns[0].classList.length);
+hideTabContent();
+showTabContent();
 
-// // console.log(btns[0].classList.item(1));
+tabsParent.addEventListener("click", (event) => {
+    let target = event.target;
 
-// btns[1].classList.add("red", "asfjefe");
-// // btns[0].classList.remove("blue");
-// // btns[0].classList.toggle("blue");
-
-// if (btns[1].classList.contains("red")) {
-//     console.log("red");
-// }
-
-// btns[1].classList.add("red");
-
-// btns[0].addEventListener("click", () => {
-//     if (btns[1].classList.contains("red")) {
-//         btns[1].classList.remove("red");
-//     } else {
-//         btns[1].classList.add("red");
-//     }
-// });
-
-// btns[0].addEventListener("click", () => {
-//     btns[1].classList.toggle("red");
-// });
+    if (target && target.classList.contains("tabs__item")) {
+        tabs.forEach((item, i) => {
+            if (target == item) {
+                hideTabContent();
+                showTabContent(i);
+            }
+        });
+    }
+});

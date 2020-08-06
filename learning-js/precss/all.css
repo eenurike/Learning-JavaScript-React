@@ -1,21 +1,30 @@
-.btn-block {
-  display: inline-block;
-  padding: 40px;
-  background-color: lightpink;
-  display: inline-flex;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.btn-block button {
-  width: 60px;
-  height: 30px;
-  background-color: lightslategray;
-  border-radius: 7px;
+img {
+  max-width: 100%;
+  height: auto;
+}
+.hide {
+  display: none;
+}
+.show {
   display: block;
-  border: none;
-  margin-right: 10px;
 }
-.btn-block button.blue {
-  background-color: lightblue;
+.tabs__wrapper {
+  display: flex;
 }
-.btn-block button.red {
-  background-color: red;
+.tabs__wrapper .tabs__content {
+  width: 500px;
+}
+.tabs__wrapper .tabs__item-wrapper .tabs__item {
+  padding: 30px;
+}
+.tabs__wrapper .tabs__item-wrapper .tabs__item:hover {
+  color: green;
+}
+.tabs__wrapper .tabs__item-wrapper .tabs__item-active {
+  font-weight: bold;
 }
