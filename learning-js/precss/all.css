@@ -13,6 +13,20 @@ img {
 .show {
   display: block;
 }
+.fade {
+  animation: fade  1s;
+}
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 .tabs__wrapper {
   display: flex;
 }
@@ -22,9 +36,7 @@ img {
 .tabs__wrapper .tabs__item-wrapper .tabs__item {
   padding: 30px;
 }
-.tabs__wrapper .tabs__item-wrapper .tabs__item:hover {
-  color: green;
-}
 .tabs__wrapper .tabs__item-wrapper .tabs__item-active {
   font-weight: bold;
+  color: green;
 }
