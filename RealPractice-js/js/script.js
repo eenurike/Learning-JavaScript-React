@@ -13,8 +13,8 @@ window.addEventListener("DOMContentLoaded", () => {
         tabsContent.forEach(item => {
             
             // item.style.display = "none";
-            item.classList.add("hide");       //Добавляем класс с display:none, а у тех у кого есть show удаляем 
-            item.classList.remove("show");
+            item.classList.add("hide");       //Добавляем класс с display:none, а у тех у кого есть show,fade удаляем 
+            item.classList.remove("show" , "fade");  
         });
 
         tabs.forEach(item => {
@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }      
 
     function showTabContent(i = 0) {               //2  (i = 0 это стандарт es6,  типа параметр по умолчанию, всегда показывай первый таб)
-        tabsContent[i].classList.add("show");        //К текущему табу добавляем класс show и удаляем класс hide
+        tabsContent[i].classList.add("show" , "fade");        //К текущему табу добавляем класс show,fade и удаляем класс hide
         tabsContent[i].classList.remove("hide");
         // tabsContent[i].style.display = "block";
         tabs[i].classList.add("tabheader__item_active");       //Добавляем класс активности
