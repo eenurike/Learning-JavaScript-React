@@ -7,36 +7,18 @@ img {
   max-width: 100%;
   height: auto;
 }
-.hide {
-  display: none;
+body {
+  padding: 20px;
 }
-.show {
-  display: block;
+.wrapper {
+  position: relative;
+  max-width: 500px;
+  height: 500px;
+  border: 2px dotted red;
 }
-.fade {
-  animation: fade  1s;
-}
-@keyframes fade {
-  to {
-    opacity: 1;
-  }
-  from {
-    transform: translateX(-500px);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-.tabs__wrapper {
-  display: flex;
-}
-.tabs__wrapper .tabs__content {
-  width: 500px;
-}
-.tabs__wrapper .tabs__item-wrapper .tabs__item {
-  padding: 30px;
-}
-.tabs__wrapper .tabs__item-wrapper .tabs__item-active {
-  font-weight: bold;
-  color: green;
+.wrapper .box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: lightseagreen;
 }

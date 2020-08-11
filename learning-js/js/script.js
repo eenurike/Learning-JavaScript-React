@@ -1,41 +1,47 @@
-"use strict";
+'use strict';
 
-let tabContent = document.querySelectorAll(".tabs__content"),
-    tabs = document.querySelectorAll(".tabs__item"),
-    tabsParent = document.querySelector(".tabs__item-wrapper");
+// let btn = document.querySelector(".btn"),
+//     timeId,
+//     i = 1;
 
-function hideTabContent() {
-    tabContent.forEach(item => {
-        item.classList.add("hide");
-        item.classList.remove("show", "fade");
-        
-    });
+// btn.addEventListener("click", () => {
+//     timeId = setInterval(logger, 1000);
+// });    
 
-    tabs.forEach(item => {
-        item.classList.remove("tabs__item-active");
-    });
-   
-}    
+// function logger() {
+//     if (i == 3) {
+//         clearInterval(timeId);
+//     }
 
-function showTabContent(i = 0) {
-    tabContent[i].classList.add("show", "fade");
-    tabContent[i].classList.remove("hide");
-    tabs[i].classList.add("tabs__item-active");
+//     console.log("hello");
+//     i++;
+    
+// }
+
+// let id = setTimeout(function log(){
+//     console.log("Hello");
+//     id = setTimeout(log, 1000);
+// }, 1000);
+
+let btn = document.querySelector(".btn");
+
+function myAnimation() {
+    let box = document.querySelector(".box"),
+        pos = 0;
+
+    function frame() {
+        if (pos == 398) {
+            clearInterval(timer);
+        } else {
+            pos++;
+            box.style.top = pos + "px";
+            box.style.left = pos + "px";
+        }
+    }    
+
+    let timer = setInterval(frame, 5);
 }
 
-hideTabContent();
-showTabContent();
+btn.addEventListener("click", myAnimation);
 
-tabsParent.addEventListener("click", (event) => {
-    let target = event.target;
-
-    if(target && target.classList.contains("tabs__item")){
-        tabs.forEach((item, i) => {
-            if (target == item) {
-                hideTabContent();
-                showTabContent(i);
-            }
-        });
-    }
-});
 
