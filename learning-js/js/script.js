@@ -1,47 +1,34 @@
 'use strict';
 
-// let btn = document.querySelector(".btn"),
-//     timeId,
-//     i = 1;
+const now = new Date();
 
-// btn.addEventListener("click", () => {
-//     timeId = setInterval(logger, 1000);
-// });    
+console.log(now);
 
-// function logger() {
-//     if (i == 3) {
-//         clearInterval(timeId);
-//     }
 
-//     console.log("hello");
-//     i++;
-    
-// }
 
-// let id = setTimeout(function log(){
-//     console.log("Hello");
-//     id = setTimeout(log, 1000);
-// }, 1000);
 
-let btn = document.querySelector(".btn");
+console.log(now.getFullYear());
+console.log(now.getMonth());
+console.log(now.getDate());
+console.log(now.getHours());
+console.log(now.getDay());
 
-function myAnimation() {
-    let box = document.querySelector(".box"),
-        pos = 0;
+console.log(now.getHours());
+console.log(now.getUTCHours());
+console.log(now.getUTCFullYear());
 
-    function frame() {
-        if (pos == 398) {
-            clearInterval(timer);
-        } else {
-            pos++;
-            box.style.top = pos + "px";
-            box.style.left = pos + "px";
-        }
-    }    
+console.log(now.getTimezoneOffset());
+console.log(now.getTime());
 
-    let timer = setInterval(frame, 5);
+console.log(now.setHours(40));
+console.log(now);
+
+let start = new Date();
+
+for (let i = 0; i < 1000000; i++) {
+    let some = i ** 3;
 }
 
-btn.addEventListener("click", myAnimation);
+let end = new Date();
 
-
+alert(`Цикл отработал за ${ end - start} миллисекунд`);
