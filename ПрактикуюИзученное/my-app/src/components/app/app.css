@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul,li,a {
+    text-decoration: none;
+    list-style: none;
+}
+
+
+
+.searchPanelBlock .wrapper {
+    justify-content: space-between;
+    display: flex;
+    
+}
+
+
+
+.Background {
+    background-color: rgba(102, 231, 160, 0.438);
+}
