@@ -5,7 +5,7 @@ const Header = () => {
     return(
         <div className="headerBlock">
             <div className="wrapper">
-                <h1>Yelemessov Nursultan</h1>
+                <h1>Yelemesov Nursultan</h1>
                 <p>5 записей, понравилось 0</p>
             </div>
         </div>

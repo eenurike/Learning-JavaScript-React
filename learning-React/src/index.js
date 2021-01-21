@@ -1,8 +1,24 @@
-"use strict";
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+import './App.css';
+import style from'./App.module.css'
+import './App';
+import reportWebVitals from './reportWebVitals';
+import All from './App';
 
-var _script = require("./script");
 
-var bla = new _script.Slider(400, 300, 5);
-bla.whoAmI();
-console.log((0, _script.button)());
 
+
+
+
+  ReactDOM.render( 
+    <React.StrictMode>
+        <div className={style.wrapper}>
+          <All/>
+        </div>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+
+
+reportWebVitals();

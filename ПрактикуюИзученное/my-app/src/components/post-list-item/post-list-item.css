@@ -1,7 +1,73 @@
 .listItem {
-    margin-top: 10px;
+   
     padding: 15px 20px;
     border: 2px solid grey;
     border-radius: 4px;
     font-size: 1.5rem;
+    
+}
+
+.important {
+    background-color: orange;
+}
+
+.listWrapper {
+    display: flex;
+    padding-top: 10px;
+}
+
+.listItem {
+    flex-grow: 1;
+}
+
+.buttonMenu {
+    display: flex;
+    align-items: stretch;
+    padding:5px 0 5px 3px;
+}
+
+.buttonMenu button {
+    padding: 10px;
+    border-radius: 0;
+    border: none;
+}
+
+.buttonMenu button:nth-of-type(1) {
+    padding: 10px;
+    border-radius: 0;
+    border: none;
+    background-color: rgb(184, 184, 47);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.buttonMenu button:nth-of-type(2) {
+    padding: 10px;
+    border-radius: 0;
+    border: none;
+    background-color: rgb(195, 53, 53);
+}
+
+.buttonMenu button:nth-of-type(2).borderRed{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.buttonMenu button:nth-of-type(2).delBorderRed{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.buttonMenu button:nth-of-type(3) {
+    padding: 10px;
+    border-radius: 0;
+    border: none;
+    background-color: rgb(44, 179, 44);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    display: none;
+}
+
+.buttonMenu button:nth-of-type(3).yes {
+    display: block;
 }

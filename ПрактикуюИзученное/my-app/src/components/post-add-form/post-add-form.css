@@ -1,0 +1,13 @@
+form {
+    display: flex;
+    margin-top: 10px;
+}
+
+form input {
+    flex-grow: 10;
+}
+
+form button {
+    flex-grow: 1;
+    margin-left: 8px;
+}

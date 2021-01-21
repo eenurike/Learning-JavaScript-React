@@ -3,9 +3,15 @@ import Header from '../header/header'
 import SearchPanel from "../search-panel/search-panel"
 import PostStatusilter from "../post-status-filter/post-status-filter"
 import PostList from '../post-list/post-list'
+import PostAddForm from '../post-add-form/post-add-form'
 import './app.css'
 
 const App= () => {
+    const data = [
+        {yo:"Going to learn React", important: true, id: "qwer"},
+        {yo:"That's good", important:true, id:"wfsd"},
+        {yo:"I need a break", id: "dfsa"}
+    ]
     return(
         <>
             <Header/>
@@ -18,7 +24,8 @@ const App= () => {
 
             <div className="postListGroup Background">
                 <div className="wrapper">
-                    <PostList/>
+                    <PostList posts={data}/>
+                    <PostAddForm/>
                 </div>
             </div>
         </>
