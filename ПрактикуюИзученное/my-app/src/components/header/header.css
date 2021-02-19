@@ -1,9 +1,0 @@
-.headerBlock .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.headerBlock {
-    background-color: rgba(102, 231, 160, 0.438);
-}
