@@ -1,11 +1,11 @@
 "use strict"; //Обозначает что используем строгий формат, например
 
-// a = 30;
-// console.log(a);
+a = 30;                 //error
+console.log(a);
 
 /*
 Сразу выдаст ошибку, так как переменная "a" не обьявлена с помощь let или const, а без use strict
-    такой бы фокус сработал, и это правильное поведение кода!!!
+    такой бы фокус сработал, и это не правильное поведение кода!!!
 И это только один пример
 */
 
@@ -19,12 +19,12 @@ console.log(number);
 number = 20;
 console.log(number);
 
-//leftBorderWidth = 50;
-//console.log(leftBorderWidth);
+leftBorderWidth = 50;               // error
+console.log(leftBorderWidth);
 
 /*
 Const - это константа, ее нельзя перезаписать выдаст ошибку
-    (поэтому я эту 10-11 строку кода и за коментировал, ниже код 
+    (поэтому я эту строку кода и за коментировал, ниже код 
         не работает из-за этой ошибки)
 */
 
@@ -43,8 +43,8 @@ console.log(obj.name);
 console.log(car);
 var car = "bmw";
 
-// console.log(car);
-// let car = "bmw";
+console.log(car);       // error
+let car = "bmw";
 
 /*
 Отличие var от let, заключается в том что var имеет поведение как hoisting (всплытие).
@@ -59,10 +59,10 @@ var car = "bmw";
 }
 console.log(result);
 
-// {
-//     let result = 22;
-// }
-// console.log(result);
+{                           //error
+    let result = 22;
+}
+console.log(result);
 
 {
     let result = 22;
