@@ -22,21 +22,22 @@ const personalMovieDB = {
 };
 
 
-
+// 1)
 for (let i = 0; i < 2; i++) {
     let a = prompt("Один из последних просмотренных фильмов?"),
         b = prompt('На сколько оцените его?');
-        
+
+// 2)        
     if (a != null && a != "" && a.length < 20) {
         personalMovieDB.movies[a] = b;
         console.log('done');
     } else {
-        i--;
+        i--;                        // Иначе возвращаемся на одну итерацию назад
         console.log('error');
     }
 
 
-// СПОСОБ 2 с == и с ИЛИ(||),с И(&&) не получается потомучто вседга будет fasle
+// СПОСОБ с == и с ИЛИ(||),с И(&&) не получается потомучто вседга будет fasle
     // if (a == null || a == "" || a.length > 20) {
     //     i--;
     //     console.log("error");
@@ -44,7 +45,41 @@ for (let i = 0; i < 2; i++) {
     //     personalMovieDB.movies[a] = b;
     //     console.log("done");
     // }
+
+
 }
+
+// 3)
+if (personalMovieDB.count <= 10) {
+    console.log("Вы посмотрели довольно мало фильмов");
+} else if (personalMovieDB.count > 10 && personalMovieDB.count <= 30) {
+    console.log("Вы классический зитель");
+} else if (personalMovieDB.count > 30) {
+    console.log("Вы киноман");
+} else {
+    console.log("Произошла ошибка");
+}
+
+/*
+Казалось бы можно был бы использовать конструкцию switch, но switch 
+сравнивает только строгое сравнение (===) !!!
+*/
+
+// 4)
+// СПОСОБ С DO WHILE
+// let a;
+// let b;
+
+// do {
+//     a = prompt("Один из последних просмотренных фильмов?");
+//     b = prompt('На сколько оцените его?');
+    
+// }
+// while(a == null || a == "" || a.length > 20);
+
+// personalMovieDB.movies[a] = b;
+
+
 
 // МОЙ СПОСОБ С WHILE
 
@@ -59,12 +94,15 @@ for (let i = 0; i < 2; i++) {
 //     b = +prompt("rate them");
 // }
 
+
 // while(a == null || a == "" || a.length > 10 ) {
+//     question1();
 //     question1();
    
 // }
 
 // while(b == null || b == "" || b !== Number(b)) {
+//     question2();
 //     question2();
 // }
 
