@@ -10,7 +10,8 @@ console.log(str.length);
 console.log(arr.length);
 
 /*
-=> 4    => 3
+=> 4
+=> 3
 length это свойство, свойства не вызываются с помощью ()
 А методы вызываются с помощью (), так как они как то изменяют данные.
 Сам console в себе содержит много методов
@@ -81,7 +82,7 @@ console.log(text.slice(6,11));
 /*
 => World
 Мы как бы обрезаем часть строки котрая нам нужна,
-в этом примере с 6 мндекса до 11
+в этом примере с 6 индекса до 11
 */
 
 console.log(text.slice(6,10));
@@ -144,7 +145,7 @@ parseInt позволяет нам убрать px, и зменить значе
 let shto = parseInt(test);
 console.log(typeof(shto));      // => number
 
-console.log(parseFloat(num));
+console.log(parseFloat(test));
 /*
 => 12.2
 Возвращает число в десетичном варианте и возвращает значение с плавающей точкой 
