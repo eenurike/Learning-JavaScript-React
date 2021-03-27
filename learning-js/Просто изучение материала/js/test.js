@@ -1,29 +1,32 @@
 'use strict';
 
-const obj = {
-    name1: "modalWinwod",
-    width: 1024,
-    height: 900,
-    style: {
-        border: "black",
-        borderRadius: "10px"
+function copyObj(mainObj) {
+    let obj = {};
+
+    for (let i in mainObj) {
+        obj[i] = mainObj[i];
     }
+
+    return obj;
+} 
+
+let options = {
+    1: 'fsaf',
+    2: 'wf;ef',
+    3: 'fsdf'
 };
 
 
-for (let key in obj) {
-    if (typeof(obj[key]) === 'object') {
-        for (let i in obj[key]) {
-            console.log(`Свойство ${i} и его значение ${obj[key][i]}`);
-           
-        }
-    } else {
-        console.log(`Свойство ${key} и его значение ${obj[key]}`);
-       
-        
-    }
-}
- console.log(Object.keys(obj).length);
+
+let newObj = copyObj(options);
+newObj["4"] = 'nurike';
+newObj["5"] = 'yelemessov';
+
+
+console.log(newObj);
+
+
+console.log(options);
 
 
 

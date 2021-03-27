@@ -50,8 +50,8 @@ console.log(options["colors"]["border"]);
 
 for (let key in options) {
 
-    if (typeof(options[key]) === "object") {     //Если свойство равно обьекту
-        for (let i in options[key]) {       //и внутри этого свойства который обьект запускаем перебор
+    if (typeof(options[key]) === "object") {     //Если значение равно обьекту
+        for (let i in options[key]) {       //и внутри этого значения который обьект запускаем перебор
             console.log(`Свойство ${i} и его значение ${options[key][i]}`);
         } 
     } else {
@@ -61,7 +61,7 @@ for (let key in options) {
 /*
 То есть если свойства обьекта будет равно по типу данных object,
 то запускается перебор имено этого обьекта, а конструкция options[key][i]
-это мы перебираем первый обьект, находит этот обьект, и перебирает его свойства.
+это мы перебираем первый обьект, находит этот обьект, и перебирает его значение.
 Чуть позже изучим такой способ как рекурсия, будет работать точно так же
 только с функциями 
 */
@@ -117,6 +117,7 @@ console.log(Object.keys(options));
 console.log(Object.keys(options)[0]);       // => test
 
 console.log(Object.keys(options).length);       // => 4 
+console.log(Object.keys9(options).length + Object.keys(options.colors).length);    // => 5
 
 options.makeTest();         // Запускаем наш собственный метод
 
