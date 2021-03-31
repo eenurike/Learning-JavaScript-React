@@ -5,16 +5,16 @@
 // Превращаем что угодно в string
 
 // 1)
-console.log(typeof (String(null))); // => string
+console.log(typeof(String(null))); // => string
 console.log(String(null)); // => null но это строка
 console.log(String(4)); // => 4
 /*
-Видим что тиа данных null, поменяли на string, но это
+Видим что тип данных null, поменяли на string, но это
 старый способ, им особо не пользуются
 */
 
 // 2) Конкатинация (когда что-то складываем со строкой)
-console.log(typeof (40 + "")); // => string
+console.log(typeof(40 + "")); // => string
 console.log(undefined + "something"); // => undefinedsomething
 
 const num = 5;
