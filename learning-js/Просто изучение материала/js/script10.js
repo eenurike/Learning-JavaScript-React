@@ -117,7 +117,7 @@ console.log(Object.keys(options));
 console.log(Object.keys(options)[0]);       // => test
 
 console.log(Object.keys(options).length);       // => 4 
-console.log(Object.keys9(options).length + Object.keys(options.colors).length);    // => 5
+console.log(Object.keys(options).length + Object.keys(options.colors).length);    // => 5
 
 options.makeTest();         // Запускаем наш собственный метод
 
