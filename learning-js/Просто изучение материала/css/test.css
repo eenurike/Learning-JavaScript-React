@@ -1,33 +1,31 @@
 body {
-    background-color: grey;
+  background-color: grey;
 }
 
-.boxWrapper , .circleWrapper {
-    display: flex;
+.boxWrapper,
+.circleWrapper {
+  display: flex;
 }
-
-
-
 
 .boxStyle {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-    background-color: green;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  background-color: green;
 }
 
 .circleStyle {
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
-    margin-right: 20px;
-    background-color: orange;
-    border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  margin-right: 20px;
+  background-color: orange;
+  border-radius: 50%;
 }
 
-.boxWrapper div.black, .circleWrapper div.black {
-    width: 110px;
-    height: 110px;
-    background-color: black;
+.boxWrapper div.black,
+.circleWrapper div.black {
+  width: 110px;
+  height: 110px;
+  background-color: black;
 }
-
