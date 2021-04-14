@@ -55,9 +55,10 @@ let btn = document.querySelector("button");
 
 // 3) addEventListener и removeEventListener самый рабочий способ
 
-btn.addEventListener('click', () => {        
-    alert("clicked");
-});
+// btn.addEventListener('click', () => {        
+//     alert("clicked");
+// });
+
 /*
 btn добывляем слежку за событиями, первым аргументом задаем
 название события, вторым аргументом запускаем callback функцию, которая
@@ -68,9 +69,11 @@ btn добывляем слежку за событиями, первым арг
         alert("clicked");
     }); 
 */
-btn.addEventListener('click', () => {        
-    alert("second click");
-});
+
+// btn.addEventListener('click', () => {        
+//     alert("second click");
+// });
+
 /*
 И большой плюс этого способа что можно назначать несколько 
 событий на один элемент. 
@@ -153,7 +156,7 @@ let deleteElement = (event) => {
 так как это зарезервированное слово
 */
 
-btn.addEventListener('click', deleteElement);           
+btn.addEventListener('click', deleteElement);
 btn.removeEventListener('click', deleteElement);
 /*
 Ничего не произойдет, так как сперва назначили обработчик
@@ -169,7 +172,7 @@ let deleteElementSecond = (event) => {
     i++;
     if (i == 1) {
         btn.removeEventListener('click', deleteElementSecond);
-    } 
+    }
 };
 
 btn.addEventListener('click', deleteElementSecond);
@@ -179,3 +182,91 @@ btn.addEventListener('click', deleteElementSecond);
 никакого обработчика
 */
 
+// Всплытие событий, это НЕ всплытие переменных(hoisting)
+
+let overlay = document.querySelector('.overlay');
+/*
+HTML структура такова
+	<div class="overlay">
+		<button id="btn">Нажми меня</button>
+	</div>
+*/
+let overlayFunck = (event) => {
+    console.log(event.target);
+    console.log(event.type);
+};
+
+btn.addEventListener('click', overlayFunck);
+overlay.addEventListener('click', overlayFunck);
+/*
+Когда у нас есть два элемента, один из них родителем другого,
+но при этом на них назначены одработчики событий, которые
+обрабатывают одни и те же действия(клик).
+В нашем примере видим что событие сперва сработало на том элементе
+который идет вложенее, и потом идет по иерархии вверх и событие
+сработало на родителе(overlay), это и называется всплытие 
+событий, когда данное действие срабатывает сперва на вложеном
+и после этого поднимается наверх по иерархии нашего DOM дерева.
+И когда у нас в консоле выводится event.target, мы ссылаемся на
+эелемент на котором произошло изначально событие 
+*/
+let currentFunck = (event) => {
+    console.log(event.currentTarget);
+    console.log(event.type);
+};
+
+btn.addEventListener('click', currentFunck);
+overlay.addEventListener('click', currentFunck);
+/*
+С помощью currentTarget очетливо видно как событие всплывает наверх,
+сперва нажат был вложенный элемент, а потом его родитель(overlay).
+И это ключевая разница между event.target и event.currentTarget
+Но на практике чаще будем пользоваться event.target
+Всплытие событий - это когда обработчик события сначала срабатывает на
+самом вложенном элементе, затем на родителе(если он у него есть), и
+так выше и выше поднимаясь по иерархии
+*/
+
+// Отменяем стандартное поведение в браузере
+/*
+Если кликнуть по ссылке на странице, мы перейдем по этой ссылке,
+это стандартное поведение ссылки, и если нажимаем на кнопку в форме
+у которой стоит атрибут submit, и мы отправляем данные на сервер или
+можно выделять текс чтобы копировать, все это стандартное 
+поведение браузера
+*/
+const link = document.querySelector("a");
+link.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(event.target);
+});
+/*
+И у event есть метод preventDefault, который и отменяет
+стандартное поведение браузера, помним что методы нужно вызывать
+и теперь ссылка никуда не перенапровляет, вместо этого
+он выводит что мы ему сказали. Такое поведение мы будем часто
+использовать
+*/
+
+/*
+Ну и навешиваем обрабочик события на несколько элементов
+    let btns = document.querySelectorAll('button');
+    btns.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            console.log(event.target);
+        });
+    });
+*/
+
+/*
+Ну и третим аргументом в eventListener можем передать options
+посмотри в документации, есть интересное свойство как once
+то есть использовать событие всего раз, вместо removeEventListener
+    btns.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            console.log(event.target);
+        }, {once:true});
+    });
+но не значит что вообще игнорируем removeEventListener, он полезен
+вместе с условиями, когда чтото произошло удаляется обработчик события
+*/

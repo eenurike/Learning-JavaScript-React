@@ -32,3 +32,28 @@ body {
 .adv > div:nth-last-of-type(2) {
   background-color: pink;
 }
+
+
+.block {
+  display: flex;
+}
+
+.block > div {
+  width: 300px;
+  height: 250px;
+  background-color: grey;
+  margin-right: 20px;
+  margin-top: 20px;
+  transition: 1s;
+}
+
+.eventBlock {
+  background-color: pink !important;
+  transition: 1s;
+  transform: scale(1.03);
+}
+
+.addRadius {
+  border-radius: 10px;
+}
+
