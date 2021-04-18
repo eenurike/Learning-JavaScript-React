@@ -10,56 +10,47 @@ let myObj = {
     ]
 };
 
-let myFruit = document.querySelector(".wrapper ul"),
-    adv = document.querySelector(".adv"),
-    h1 = document.querySelector('h1'),
-    blocks = document.querySelectorAll('.block div');
-
-myFruit.innerHTML = "";
-myObj.fruits.sort();
-myObj.fruits.forEach((item, i) => {
-    myFruit.innerHTML += `
-        <li>${i+1}: ${item}</li>
-    `;
-
-});
+let adv = document.querySelector('.adv'),
+    wrapper = document.querySelector('.wrapper'),
+    title = wrapper.querySelector('h1'),
+    fruitList = wrapper.querySelector('ul'),
+    formAdd =  wrapper.querySelector('form'),
+    inputValue = formAdd.querySelector('input');
 
 adv.remove();
-h1.textContent = "Fruits";
+title.textContent = "Fruits";
+
+let deleteList = () => {
+    fruitList.innerHTML = "";
+};
 
 
 
+let createNewList = (fruitList, parent) => {
+    fruitList.forEach((item, i) => {
+        parent.innerHTML += `
+            <li>${i+1}: ${item}</li>
+        `;
+    });
+};
 
-blocks.forEach((item,i) => {
-    // let num = 0;
-    // let deleteElement = (event) => {
-    //     item.classList.toggle('eventBlock');
-    //     num++;
-        
-    // };
-    // if (num == 1) {
-    //     item.removeEventListener('click', deleteElement);
-    //     console.log("work");
-    // } 
-    // item.addEventListener('click',deleteElement);
-    let num = 0;
-    
-    
-    num++;
-    let deleteElement = () => {
-        item.classList.toggle('eventBlock');
 
-        if(num == 1) {
-            item.removeEventListener('click', deleteElement);
-        }
-        
-    };
-    
-    item.addEventListener('click', deleteElement);
-    console.log(num);
-    
+
+formAdd.addEventListener('submit', (event) => {
+    event.preventDefault();
+    deleteList();
+
+    let newFilm = inputValue.value;
+    myObj.fruits.push(newFilm);
+
+    myObj.fruits.sort();
+    createNewList(myObj.fruits, fruitList);
+    event.target.reset();
 });
 
+
+deleteList();
+createNewList(myObj.fruits, fruitList);
 
 
 

@@ -36,7 +36,28 @@ advertisement.forEach(item => {
     item.remove();
 });
 
+formAdd.addEventListener('submit', (event) => {
+    event.preventDefault();
 
+    let newFilm = addInput.value;
+    movieDB.movies.push(newFilm);
+    movieDB.movies.sort();
+    manageList();
+
+    event.target.reset();
+});
+
+let manageList = () => {
+    movieList.innerHTML = "";
+    movieDB.movies.forEach(function (item, i) {
+        
+        movieList.innerHTML += `    
+            <li class="promo__interactive-item">${i+1}: ${item}     
+                <div class="delete"></div>
+            </li>
+        `;
+    });
+};
 
 genre.textContent = "Драма";
 
@@ -50,15 +71,10 @@ console.log(movieDB);
 
 console.log(poster.innerHTML);
 
-movieDB.movies.forEach(function (item, i) {
-
-    movieList.innerHTML += `    
-        <li class="promo__interactive-item">${i+1}: ${item}     
-            <div class="delete"></div>
-        </li>
-    `;
-});
 
 
 
+
+
+manageList();
 
