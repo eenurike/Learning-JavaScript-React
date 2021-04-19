@@ -14,67 +14,176 @@ P.S. Здесь есть несколько вариантов решения з
 
 'use strict';
 
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против...",
-    ]
-};
+document.addEventListener('DOMContentLoaded', () => {
+    /*
+    Наш скрипт сработает только тогда, когда DOM структура
+    будет загружена. Можно вместо document написать window
+    Ну о window поговорим позже. И еще кроме DOMContentLoaded
+    есть load, тогда скрипт ждет прогрузки всего DOM и стилей,
+    и картинок, но пользователь не будет ведь так долго ждать
+    */
 
-let advertisement = document.querySelectorAll('.promo__adv img'),
-    poster = document.querySelector('.promo__bg'),
-    genre = poster.querySelector('.promo__genre'),
-    movieList = document.querySelector('.promo__interactive-list'),
-    addInput = document.querySelector('.adding__input'),
-    formAdd = document.querySelector('form.add');
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против...",
+        ]
+    };
+    
+    let advertisement = document.querySelectorAll('.promo__adv img'),
+        poster = document.querySelector('.promo__bg'),
+        genre = poster.querySelector('.promo__genre'),
+        movieList = document.querySelector('.promo__interactive-list'),
+        addForm = document.querySelector('form.add'),
+        addInput = addForm.querySelector('.adding__input'),
+        checkbox = addForm.querySelector('[type="checkbox"]');  // Так обращаемся к атрибутам
+    
 
+    /*
+    1) Логика такова, вносим новый фильм в нашу базу данных,
+    потом заново строим список фильмов, потом добавляем
+    список на страницу
+    */
+    addForm.addEventListener('submit', (event) => {     
+        /*
+        Событие submit, следит за отправкой формы, иммено тега form.
+        Заметь что назначаем обработчик не на button, а на form
+        */
+        event.preventDefault();
 
-advertisement.forEach(item => {
-    item.remove();
-});
+        let newFilm = addInput.value;
+        /*
+        value показывает что ввел пользователь в input
+        */
+        const favorite = checkbox.checked;
+        /*
+        checked показывает какой boolean поставил
+        пользователь в checkbox
+        */
 
-formAdd.addEventListener('submit', (event) => {
-    event.preventDefault();
+        if (newFilm) {
 
-    let newFilm = addInput.value;
-    movieDB.movies.push(newFilm);
-    movieDB.movies.sort();
-    manageList();
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0, 22)}...`;
+                /*
+                2) Если пользователь ввел больше 21-го символа
+                то дальше текст обрезаеться и добавляются три точки
+                */
+            }
 
-    event.target.reset();
-});
+            if (favorite) {     // 5)
+                console.log("Добавляем любимый фильм");
+            }
 
-let manageList = () => {
-    movieList.innerHTML = "";
-    movieDB.movies.forEach(function (item, i) {
-        
-        movieList.innerHTML += `    
-            <li class="promo__interactive-item">${i+1}: ${item}     
+            movieDB.movies.push(newFilm);
+            /*
+            Вспоминаем метод добывления в конец массива push
+            */
+            sortArr(movieDB.movies);
+            createMovieList(movieDB.movies, movieList);
+        }
+        /*
+        Из динамической типизации помним что, пустая строка
+        это false. И значить если пользователь в input ничего
+        не введет, то это false. И наше условие пойдет по
+        else и ничего не произойдет. И задача будет выполнена,
+        пустая строка не добавится в список
+        */
+
+      event.target.reset();
+      /*
+        Очистили нашу форму, от всех записей.
+        Могли бы обратиться addform.reset()
+      */
+    });    
+    
+    /*
+    Ну и все обернем в функции, и приeчай себя функции прописывать
+    в function declaration, ну и привыкай передвать аргументы в функции,
+    чтоб только при вызове обращаться к конкртному элементу
+    */
+    const deleteAdv = (arr) => {
+        advertisement.forEach(item => {
+            item.remove();
+        });
+    };
+   
+    const makeChanges = () => {
+        genre.textContent = "Драма";
+        poster.style.backgroundImage = "url('img/bg.jpg')";
+        /*
+        Тут думаю не имеет смысла переводить в формат
+        с аргументами 
+        */
+    };
+
+    const sortArr = (arr) => {
+        arr.sort();
+    };
+
+    function createMovieList(films,parent) {
+        /*
+        Выносим эту структуру в функцию, чтоб переиспользовать,
+        и сделали ее более уневирсальной 
+        */
+        parent.innerHTML = "";
+        sortArr(films); // 5)
+        /*
+        Переместили очищение списка сюда, потомучто
+        при клике на кнопку добавить фильм, чтоб очищался
+        список на странице, и добавлял новый список с нашего
+        массива(база данных) 
+        */
+        films.forEach((item, i) => {
+            parent.innerHTML += `
+            <li class="promo__interactive-item">${i+1}:${item}
                 <div class="delete"></div>
             </li>
-        `;
-    });
-};
+            `;
+        });
 
-genre.textContent = "Драма";
+        /*
+        3) Логика такая, будем назначать обработчик события
+        на каждую кнопку удаления. Если пользователь кликнет
+        на корзину,  то удаляем родителя этого элемента
+        и вырезать тот фильм который был удален из базы данных
+        */
+         document.querySelectorAll('.delete').forEach((item,i) => {
+            item.addEventListener('click', () => {
+                item.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+                /*
+                Метод splice вырезает элемент с массива,
+                i это тот элемент который мы удалили,
+                а второй аргумент от этого элемента 
+                сколько удалить. Но проблемма в том что
+                при удалении элемента у нас не подтсраиваеться
+                нумерация, тут поможет такой прием как рекурсия
+                (это когда функция вызывает сама себя внутри)
+                более подробно будем разбирать в следующих уроках.
+                Мы хотим чтоб наш новый массив с удаленным элементом
+                заново перестороился
+                */
+                createMovieList(films, parent);
+                /*
+                Ну и если эта функция вызывается в самой себя,
+                то почему бы и не вызвать с теми же аргументами,
+                с которыми мы эту функцию создавали
+                */
+            });
+        });
+    }
 
-poster.style.backgroundImage = "url('img/bg.jpg')";
+    deleteAdv(advertisement);
+    makeChanges();
+    createMovieList(movieDB.movies, movieList);
+    /*
+    Первый аргумент, что мы будем перебирает(массив с фильмами)
+    Второй аргумент, куда наш список помещаем 
+    */
+});
 
-movieList.innerHTML = "";
-
-movieDB.movies.sort();
-console.log(movieDB);
-
-
-console.log(poster.innerHTML);
-
-
-
-
-
-
-manageList();
 
