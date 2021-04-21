@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 */
             }
 
-            if (favorite) {     // 5)
+            if (favorite) {     // 4)
                 console.log("Добавляем любимый фильм");
             }
 
@@ -152,6 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
         и вырезать тот фильм который был удален из базы данных
         */
          document.querySelectorAll('.delete').forEach((item,i) => {
+            /*
+            Достаем этот элемент именно в этой функции, потому что
+            именно здесь и формируется HTML структура
+            */
             item.addEventListener('click', () => {
                 item.parentElement.remove();
                 movieDB.movies.splice(i, 1);
