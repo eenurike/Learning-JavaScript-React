@@ -66,7 +66,7 @@ console.log(result);
 
 {
     let result = 22;
-    console.log(22);
+    console.log(result);
 }
 
 /*
