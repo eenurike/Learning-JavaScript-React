@@ -1,0 +1,80 @@
+.tabs_content {
+    max-width: 900px;
+    background-color: lightgray;
+}
+
+.tabs_list {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+}
+
+.tabs_list > div {
+    width: calc(900px / 4);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+    transition: .5s;
+}
+
+.tabs_list > div:hover:not(.active) {
+    background-color: rgb(233, 233, 233);
+    transition: .8s;
+}
+
+.tabs_list > div:not(:nth-of-type(4)) {
+    border-right: 1px solid black;
+}
+
+.tabs_block {
+    position: relative;
+    background-color: white;
+    overflow: hidden;
+}
+
+.tabs_block > div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+
+}
+
+.tabs_block > div > img + p {
+    position: absolute;
+    right: 45%;
+    top: 35%;
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(29, 236, 226);
+}
+
+.active {
+    font-weight: bold;
+    background-color: grey;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: .8s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
