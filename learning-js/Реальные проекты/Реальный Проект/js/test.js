@@ -47,11 +47,12 @@
 // });
 
 window.addEventListener('DOMContentLoaded', () => {
-    let tabsParent = document.querySelector('.tabs_content'),
-        tabsList = tabsParent.querySelectorAll('.tabs_item'),
-        tabsBlock = document.querySelectorAll('.tabs_block > div');
+    
+    let tabsBlock = document.querySelectorAll('.tabs_block div'),
+        tabsList = document.querySelectorAll('.tabs_list div'),
+        tabsParent = document.querySelector('.tabs_list');
 
-    let hideTabs = () => {
+    let hideTabsContent = () => {
         tabsBlock.forEach(item => {
             item.classList.add('hide');
             item.classList.remove('show');
@@ -62,10 +63,9 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    let showTabs = (i = 0) => {
+    let showTabsContent = (i = 0) => {
         tabsBlock[i].classList.add('show', 'fade');
         tabsBlock[i].classList.remove('hide');
-
         tabsList[i].classList.add('active');
     };
 
@@ -75,13 +75,13 @@ window.addEventListener('DOMContentLoaded', () => {
         if (target && target.classList.contains('tabs_item')) {
             tabsList.forEach((item,i) => {
                 if (target == item) {
-                    hideTabs();
-                    showTabs(i);
+                    hideTabsContent();
+                    showTabsContent(i);
                 }
             });
         }
     });
 
-    hideTabs();
-    showTabs();
+    hideTabsContent();
+    showTabsContent();
 });

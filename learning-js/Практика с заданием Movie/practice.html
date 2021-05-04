@@ -8,18 +8,58 @@
 </head>
 <body>
     
-    <ul>
-        <li>Apple <div class="del">Delete</div></li>
-        <li>Orange <div class="del">Delete</div></li>
-        <li>Kivi <div class="del">Delete</div></li>
-        <li>Banana <div class="del">Delete</div></li>
-        <li>potato <div class="del">Delete</div></li>
-    </ul>
+    <div class="wrapper">
+        <ul>
+            <li>Apple <button class="del">Delete</button></li>
+            <li>Orange <button class="del">Delete</button></li>
+            <li>Kivi <button class="del">Delete</button></li>
+            <li>Banana <button class="del">Delete</button></li>
+            <li>potato <button class="del">Delete</button></li>
+        </ul>
+    
+        <form action="#">
+            <input type="text" placeholder="Enter favorite fruit">
+            <button>Add</button>
+        </form>
+    </div>
 
-    <form action="#">
-        <input type="text" placeholder="Enter favorite fruit">
-        <button>Add</button>
-    </form>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 10px;
+        }
+
+        .wrapper {
+            max-width: 200px;
+        }
+
+        ul {
+            margin-bottom: 10px;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        form {
+            display: flex;
+        }
+
+        form input {
+            flex-grow: 1;
+        }
+
+        form button {
+            margin-left: 10px;
+            width: inherit;
+        }
+    </style>
 
     <script src="js/practice.js"></script>
 </body>
