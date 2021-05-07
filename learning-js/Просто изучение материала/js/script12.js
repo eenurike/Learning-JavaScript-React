@@ -198,7 +198,12 @@ let objOfNum = {
 };
 
 let newObjOfNum = {...objOfNum};
+let secondObjOfNum = {...objOfNum, nurike: 'yo', frontEndDeveloper: true};
+/*
+В другой обьект добавили другие совйства
+*/
 newObjOfNum.two = 22;
 console.log(newObjOfNum);   // => 22
 console.log(objOfNum);      // => 2
+console.log(secondObjOfNum);
 
