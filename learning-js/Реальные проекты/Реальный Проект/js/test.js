@@ -1,13 +1,13 @@
-'use strict';
+// 'use strict';
+
 
 // window.addEventListener('DOMContentLoaded', () => {
+    
+//     let tabsBlock = document.querySelectorAll('.tabs_block div'),
+//         tabsList = document.querySelectorAll('.tabs_list div'),
+//         tabsParent = document.querySelector('.tabs_list');
 
-//     let tabsList = document.querySelectorAll('.tabs_item'),
-//         tabsBlock = document.querySelectorAll('.tabs_block > div'),
-//         tabsListParent = document.querySelector('.tabs_list'),
-//         cardPhrase = document.querySelectorAll('.tabs_block > div p');
-
-//     let hideTabContent = () => {
+//     let hideTabsContent = () => {
 //         tabsBlock.forEach(item => {
 //             item.classList.add('hide');
 //             item.classList.remove('show');
@@ -18,35 +18,32 @@
 //         });
 //     };
 
-//     let showTabContent = (i = 0) => {
+//     let showTabsContent = (i = 0) => {
+//         tabsBlock[i].classList.add('show', 'fade');
 //         tabsBlock[i].classList.remove('hide');
-//         tabsBlock[i].classList.add('show', "fade");
-
 //         tabsList[i].classList.add('active');
 //     };
 
-//     hideTabContent();
-//     showTabContent();
-
-//     tabsListParent.addEventListener('click', (event) => {
+//     tabsParent.addEventListener('click', (event) => {
 //         let target = event.target;
 
 //         if (target && target.classList.contains('tabs_item')) {
 //             tabsList.forEach((item,i) => {
 //                 if (target == item) {
-//                     hideTabContent();
-//                     showTabContent(i);
+//                     hideTabsContent();
+//                     showTabsContent(i);
 //                 }
 //             });
 //         }
 //     });
 
-//     cardPhrase.forEach(item => {
-//         item.textContent = item.textContent.toUpperCase();
-//     });
+//     hideTabsContent();
+//     showTabsContent();
 // });
 
-window.addEventListener('DOMContentLoaded', () => {
+'use strict';
+
+window.addEventListener("DOMContentLoaded", () => {
     
     let tabsBlock = document.querySelectorAll('.tabs_block div'),
         tabsList = document.querySelectorAll('.tabs_list div'),
@@ -56,12 +53,11 @@ window.addEventListener('DOMContentLoaded', () => {
         tabsBlock.forEach(item => {
             item.classList.add('hide');
             item.classList.remove('show');
-        });
-
+        }); 
         tabsList.forEach(item => {
             item.classList.remove('active');
         });
-    };
+    };    
 
     let showTabsContent = (i = 0) => {
         tabsBlock[i].classList.add('show', 'fade');
