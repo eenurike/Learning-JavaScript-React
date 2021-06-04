@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
   
-    const deadline = '2021-05-13'; 
+    const deadline = '2022-06-13'; 
 
     function getTimeRemaining(endtime) {
 
@@ -137,12 +137,8 @@ window.addEventListener('DOMContentLoaded', () => {
         */
     };
 
-    modalTrigger.forEach(item => {
-        /*
-        Открываем мод. окно при клике на кнопку 
-        */
-        item.addEventListener('click', () => {
-            modal.classList.remove('hide');
+    let openModal = () => {
+        modal.classList.remove('hide');
             modal.classList.add('show');
             /* Или вариант с toggle */
             // modal.classList.toggle('show');
@@ -152,7 +148,16 @@ window.addEventListener('DOMContentLoaded', () => {
             Чтоб при открытии модального окна сайт не скролился,
             за прокрутку отвечает css свойство overflow
             */
-        });
+           clearInterval(modalTimerId);
+           /* Отменяем наш таймер, этот таймер ниже,
+           этот материал со следующего урока! */
+    };
+
+    modalTrigger.forEach(item => {
+        /*
+        Открываем мод. окно при клике на кнопку 
+        */
+        item.addEventListener('click', openModal);
     });    
 
     modalCloseBtn.addEventListener('click', closeModal);
@@ -163,7 +168,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     /*
     Улучшим модальное окно, сделаем чтоб при клике на подложку
-    или на клавишу ESC мод. окно закрывалось. 
+    и на клавишу ESC мод. окно закрывалось. 
     У нас HTML структура такова
     <div class="modal">
      <div class="modal__dialog">
@@ -205,6 +210,56 @@ window.addEventListener('DOMContentLoaded', () => {
         */
         }
     });
+
+    // Чтоб модалка вызвалась через какое то время
+
+    const modalTimerId = setTimeout(openModal, 3000);
+    /* Но проблема в том что, если пользователь уже кликнул на тригер,
+    и мод. окно вызвалось, а потом закрыл мод. окно, и через какое то время 
+    снова вылазиет мод. окно, не логично как то. Так что очищаем таймер
+    clearInterval, будем запускать clearInterval в функции openModal, так как
+    если пользователь нажимает на тригер и вызывается openModal, и там уже
+    вызывается clearInterval, и наш таймер не вылезет через какое то время */
+
+    // Чтоб модалка вызывалась когда пользователь долистает страницу до конца
+
+    /* Тут воспользуемся знаниями из урока с "Параметрами документа" 
+    познакомимся с новой метрикой pageYOffset, по сути это одно и тоже
+    что и scrollTop - сколько px пользователь отлистал сверху, 
+    только pageYOffset поддерживается чуть больше в старых браузерах,
+    ну и конечно в старом коде чаще встречается именно pageYOffset.
+    Алгоритм действий такой:
+    1) Возьмем свойство которое отвечает за прокрутку сверху pageYOffset 
+    2) Возьмем свойство которое отображает высоту именно клиента,
+        то есть его видимой части, то что он видит в данны момент без прокрутки
+    3) И будем ее сравнивать со scrollHeight(с полной прокруткой
+        и с полным контентом который есть по высоте) Если эти два
+        выражения будут совпадать, то пользователь долистал до конца */
+
+    // window.addEventListener('scroll', () => {
+    //     if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight)  {
+    //         openModal();
+    //         /* Но проблема в том что, каждый раз когда долистываешь до конца 
+    //         вызывается мод. окно, это не правильно, нужно всего один раз,
+    //         и вспоминаем полезный аргумент у обработчиков события
+    //         once:true, но он не сработает, так как когда пользователь
+    //         начнет скролить, после первого скрола и отработает once:true.
+    //         Тут нам поможет удалиние обработчика события */
+    //     }     
+    // });
+
+    let showModalByScroll = () => {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight)  {
+            openModal();
+            window.removeEventListener('scroll', showModalByScroll);
+            /* Обработчик события отработает один раз, и потом он удалится */
+        }
+    };
+
+    window.addEventListener('scroll', showModalByScroll);
+    /* Помним чтоб удалить обработчик события, ему нужна ссылка на главный
+    обработчик события. И уточнить именно window так как пользователь
+    скролит окно браузера! */
 });
 
 
