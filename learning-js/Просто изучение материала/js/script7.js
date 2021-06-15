@@ -11,7 +11,14 @@ function showMeFirstMessage() {
     console.log("I'm a function");
 }
 
-console.log(showMeFirstMessage); // Обязательно нужно вызвать функцию
+showMeFirstMessage(); // Обязательно нужно вызвать функцию
+
+function showMeFirstMessage2() {
+    return "I'm a function";
+}
+
+console.log(showMeFirstMessage2()); 
+/* А тут мы возвращаем строку, и вызываем функцию в консоле */
 
 /*
 Есть правила что имя функции должно быть глаголом с припиской
@@ -47,7 +54,7 @@ function giveVariable() {
     console.log(num2);
 }
 
-giveVariable();
+giveVariable(); // => 20
 
 
 function returnVariable() {
@@ -75,7 +82,7 @@ anotherVariable(); // => 22
 
 /*
 Видим одинаковую глобальную и локальную переменную, но значение разные,
-и они между собой никак не конфликтуют
+и они между собой никак не конфликтуют, но лучше так не делать, можно запутаться
 */
 
 
@@ -89,6 +96,8 @@ function loopBack(text) {
 console.log(loopBack("ЗАМЫКАНИЕ"));
 
 /*
+=> 505
+=> this is ЗАМЫКАНИЕ
 Видим что функция не нашла в своем теле переменную num4, и функция выходит наружу,
 и ищет из вне переменную num4, находит и передает в console.log - это и есть замыкание.
 По простому замыкание функции - это функция со всеми внешними переменными которые
