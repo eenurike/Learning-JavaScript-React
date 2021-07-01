@@ -160,3 +160,30 @@ body {
     box-shadow: 0 0 5px 2px gray;
     font-weight: normal !important;
 }
+
+.cardWrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cardBlock {
+    border: 1px solid black;
+}
+
+.cardBlock .image {
+    width: 300px;
+    height: 200px;
+    background-color: hotpink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cardBlock .title {
+    border-bottom: 1px solid #000;
+}
+
+.cardBlock p {
+    padding: 0 5px;
+}

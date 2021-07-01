@@ -76,5 +76,64 @@ window.addEventListener("DOMContentLoaded", () => {
                 closeModal();
             }
         });
+
+
+        const parent = document.querySelector('.cardWrapper');
+        parent.innerHTML = "";
+
+        class CardBlock {
+            constructor(bgColor, title, text, parentElement) {
+                this.bgColor = bgColor;
+                this.title = title;
+                this.text = text;
+                this.parent = document.querySelector(parentElement);
+            }
+
+
+            render() {
+                const element = document.createElement('div');
+                element.innerHTML = `
+                <div class="cardBlock">
+                    <div class="image" style=${this.bgColor}>
+                        <p>image1</p>
+                    </div>
+                    <div class="title">
+                        <p>${this.title}</p>
+                    </div>
+                    <div class="text">
+                        <p>${this.text}</p>
+                    </div>
+                </div>
+                `;
+
+                this.parent.append(element);
+            }
+        }
+
+
+        new CardBlock (
+            "background:red;",
+            'Apple',
+            'IOS',
+            ".cardWrapper"
+        ).render();
+
+        new CardBlock (
+            "background:purple;",
+            'Samsung',
+            'Android',
+            ".cardWrapper"
+        ).render();
+
+        new CardBlock (
+            "background:green;",
+            'Lenovo',
+            'Windows',
+            ".cardWrapper"
+        ).render();
+
+
+
+
         
 });
