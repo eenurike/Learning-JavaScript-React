@@ -164,6 +164,7 @@ body {
 .cardWrapper {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .cardBlock {
@@ -186,4 +187,25 @@ body {
 
 .cardBlock p {
     padding: 0 5px;
+}
+
+
+.red {
+    background-color: rgb(168, 61, 61) !important;
+}
+
+.purple {
+    background-color: rgb(224, 136, 201) !important;
+}
+
+.green {
+    background-color: rgb(108, 209, 108) !important;
+}
+
+.grey {
+    background-color: rgb(95, 91, 91) !important;
+}
+
+.lightGrey {
+    background-color: rgb(184, 184, 184) ;
 }

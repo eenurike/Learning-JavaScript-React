@@ -82,19 +82,35 @@ window.addEventListener("DOMContentLoaded", () => {
         parent.innerHTML = "";
 
         class CardBlock {
-            constructor(bgColor, title, text, parentElement) {
+            constructor(bgColor, title, text, parentElement, ...classes) {
                 this.bgColor = bgColor;
                 this.title = title;
                 this.text = text;
+                this.classes = classes;
                 this.parent = document.querySelector(parentElement);
             }
 
 
             render() {
                 const element = document.createElement('div');
+
+                this.classes.forEach(item => element.classList.add(item));
+
+                if (element.classList.contains != "cardBlock") {
+                    element.classList.add("cardBlock");
+                    // element.classList.add("grey");
+                }
+                
+                // if(this.classes.length === 0) {
+                //     this.defaultClass = "cardBlock";
+                //     this.classes.push(this.defaultClass);
+                    
+                // }
+                    
+                
+
                 element.innerHTML = `
-                <div class="cardBlock">
-                    <div class="image" style=${this.bgColor}>
+                    <div class="image ${this.bgColor}" >
                         <p>image1</p>
                     </div>
                     <div class="title">
@@ -103,7 +119,6 @@ window.addEventListener("DOMContentLoaded", () => {
                     <div class="text">
                         <p>${this.text}</p>
                     </div>
-                </div>
                 `;
 
                 this.parent.append(element);
@@ -112,24 +127,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
         new CardBlock (
-            "background:red;",
+            "red",
             'Apple',
             'IOS',
-            ".cardWrapper"
+            ".cardWrapper",
+            "grey",
+            "yo"
         ).render();
 
         new CardBlock (
-            "background:purple;",
+            "purple",
             'Samsung',
             'Android',
-            ".cardWrapper"
+            ".cardWrapper",
+            "lightGrey"
         ).render();
 
         new CardBlock (
-            "background:green;",
+            "green",
             'Lenovo',
             'Windows',
-            ".cardWrapper"
+            ".cardWrapper",
+            "grey"
         ).render();
 
 
