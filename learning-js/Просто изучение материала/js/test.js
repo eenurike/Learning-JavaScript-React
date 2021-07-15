@@ -91,3 +91,19 @@ personalMovieDB.detectPersonalLevel();
 personalMovieDB.writeYourGenres(personalMovieDB.genres);
 personalMovieDB.toggleVisibleMyDB();
 personalMovieDB.showMyDB(personalMovieDB.privat);
+
+let num = '1,2,3,4,5';
+let numArr = num.split(',');
+
+numArr.push('yo');
+console.log(numArr);
+
+let arrString = numArr.join(': ');
+console.log(arrString);
+
+let teast1 = (fixStr) => {
+    fixStr = fixStr.split(': ').join(' ');
+    console.log(fixStr);
+};
+
+teast1(arrString);
