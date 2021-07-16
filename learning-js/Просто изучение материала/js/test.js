@@ -85,12 +85,12 @@ let personalMovieDB = {
 
 
 
-personalMovieDB.start();
-personalMovieDB.rememberMyFilms();
-personalMovieDB.detectPersonalLevel();
-personalMovieDB.writeYourGenres(personalMovieDB.genres);
-personalMovieDB.toggleVisibleMyDB();
-personalMovieDB.showMyDB(personalMovieDB.privat);
+// personalMovieDB.start();
+// personalMovieDB.rememberMyFilms();
+// personalMovieDB.detectPersonalLevel();
+// personalMovieDB.writeYourGenres(personalMovieDB.genres);
+// personalMovieDB.toggleVisibleMyDB();
+// personalMovieDB.showMyDB(personalMovieDB.privat);
 
 let num = '1,2,3,4,5';
 let numArr = num.split(',');
@@ -107,3 +107,52 @@ let teast1 = (fixStr) => {
 };
 
 teast1(arrString);
+
+
+let something = 'Nurike loh';
+
+something = something.split(' loh').join(' krasavchik');
+console.log(something);
+
+let strangeArr = ['Temur loh', 'Stas loh', 'Ika loh', 'Nurike loh'];
+strangeArr = strangeArr.join(', ');
+console.log(strangeArr);
+
+strangeArr = strangeArr.split(' loh').join(' Krasavchik');
+console.log(strangeArr);
+
+strangeArr = strangeArr.split(', ');
+console.log(strangeArr);
+
+let numbers = [1,2,3,4,5];
+numbers.push(6,7);
+console.log(numbers);
+
+numbers = numbers.join(' ');
+console.log(numbers);
+console.log(numbers.length);
+
+let numbersDel1 = numbers.substr(0,4);
+let numbersDel2 = numbers.slice(6);
+console.log(numbersDel1);
+console.log(numbersDel2);
+
+let newNumber = numbersDel1 + numbersDel2;
+
+console.log(newNumber);
+
+newNumber = newNumber.split(' ');
+console.log(newNumber);
+
+let alo = '12345';
+alo = alo + '6';
+console.log(alo);
+console.log(alo.length);
+
+alo = alo.split('').join(' ');
+console.log(alo);
+
+
+
+
+
