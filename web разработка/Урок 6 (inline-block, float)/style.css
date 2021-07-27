@@ -106,6 +106,29 @@ img {
 могут попастся старые сайты которые были сделаны на float, и нужно уметь
 с ними работать */
 
+/* Затем на замену float пришла строчно блочная верстка inline-block,
+и разбирем вертикальное выравнивание, видим что наши блоки криво расположены,
+сначало уберем float */
+
+img {
+    float: none;
+}
+
+.box {
+    display: inline-block;
+    vertical-align: top;
+    /* И видим что наши блоки выравнились по центру */
+    height: 100px;
+    /* А если у нас блоки разной высоты, но нужно их позиционировать
+    к центру */
+    vertical-align: middle;
+}
+
+.red {
+    height: 300px;
+}
+
+
 nav {
     position: static;
     position: relative;
@@ -133,6 +156,9 @@ nav {
     background-color: red;
     display: inline-block;
 }
+
+
+
 
 
 
