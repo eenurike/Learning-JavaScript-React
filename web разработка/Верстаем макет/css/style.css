@@ -9,7 +9,7 @@
     /* Ширину не прописываем в 1920 потому что, мы просто оставляем ее на воле,
     ведь наш сайт будет подстраиваться под различные размеры экрана, а вот
     высоту установим */
-    height: 800px;
+    /* height: 800px; */ /* Высота бдует строиться по контенту */
     background: url("../img/bg/main_bg.jpg") center center/cover no-repeat; 
     /* Сперва нужно выйти из папки!!!
     почему выйти, потому что мы сейчас находимся в style.css, и нужно выйти
@@ -103,5 +103,83 @@ h2.title {
     text-transform: uppercase;
     text-align: center;
     margin-top: 21px;
+}
+
+.promo .promo_text {
+    color: #FFFFFF;
+    font-family: "Roboto Light";
+    line-height: 28px;
+    /* Межстрочный интервал теперь нам нужен, так как у нас
+    несколько строк текста. Проще говоря высота строки */
+    font-size: 21px;
+    font-weight: 300;
+    text-align: center;
+    padding: 0 13px;
+    /* Чтоб было как в макете, когда подключим шрифты все встанет на место */
+    margin-top: 23px;
+}
+
+.promo .promo_text span {
+    font-family: Roboto;
+    text-transform: uppercase;
+    color: #F9BF3B;
+    font-weight: 700;
+}
+
+/* Ну и правило для того чтоб было удобнее верстать, не нужно
+margin делать в разброс, у одного блока сверху, и другого снизу,
+а у этого и сверху и снизу, лучше как то шаблонизировать. 
+Например у всех блоков только margin-top или margin-botom.
+Так же и с margin-left и margin-right */
+
+.promo .promo_btn {
+    /* Тут уже нас интересует ширина и высота, это уже такой более
+    оформленный блок */
+    /* width: 313px;
+    height: 72px; */
+    padding: 23px;
+
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.18);
+    /* insert это тень падает во внутрь, потом смещение тени по оси X,
+    потом смещение по оси Y, затем размытие нашей тени(чем больше значение,
+    тем больше размытие), затем цвет(0.18 это прозрачность) */
+    border: 4px solid  rgba(0, 0, 0, 0.23);
+    background-image: linear-gradient(to top, #2798b9 0%, #3ab6da 100%);
+    /* Вместо картинки можно установить градиент */
+    /* И нужно кнопку поставить в центр, но тег button строчно блочный элемент */
+    display: block;
+    /* margin-top: 73px; */
+    /* Если запишем отступ среху перед нашим центрированием, то ничего не произойдет
+    так как margin 0 auto перепишет значение margin top */
+    margin: 0 auto;
+    margin-top: 73px;
+
+    font-family: "Roboto Condensed";
+    font-weight: 400;
+    font-size: 21px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    cursor: pointer;
+    /* При наведении появлется обводка кнопки чтоб этого не было */
+    outline: none;
+}
+
+.more {
+    margin-top: 73px;
+}
+
+.more .more_text {
+    font-family: "Roboto - Thin";
+    font-weight: 200;
+    font-size: 15px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.more .more_img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 13px;
 }
 
