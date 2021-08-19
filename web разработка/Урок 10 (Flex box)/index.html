@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordpress интенсив</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- И первое что видим в макете, что макет шириной в 1920px, 
+    это самая большая ширина которая расчитывается для сайтов, 
+    конечно есть мониторы котрые поддерживают ширину 1024px 1440px
+    а самая максимальная признана 1920px, коненчно есть и еще больше,
+    но там они будут выглядеть точно так же как и на 1920px -->
+
+    <!-- Тут у нас так таковой шапки(header) нет -->
+
+    <section class="promo"> 
+    <!-- семантические теги служат для того что разделять какие то элементы
+    на странице, тут мы отделяем первую секцию от других которые будут в макете -->
+        <div class="container">
+            <!-- Это наш контенер в 1140px который будет центрировать контент,
+            и оставлять место по бокам -->
+
+            <div class="logo">
+                <!-- Тут будет наш логотип -->
+                <img src="icons/logo.svg" alt="logo" class="logo_img">
+                <!-- Текствый блок под логотипом -->
+                <div class="logo_text">WordPress интенсив</div>
+                <!-- Заметь тут мы не используем такой тег как p,
+                так как это не параграф, а просто текст лежащий в div.
+                Чаще всего текст помещается в блоки а не в параграфы -->
+            </div>
+
+            <h1 class="title">Создать свой сайт на WordPress</h1>
+            <!-- Ничего страшного если у нас главный заголовок h1 размером будет 
+            меньше чем все остальные, но по смыслу по seo он главнее всех,
+            потомучто наш сайт и рекламирует "создание сайтов на wordpress" -->
+
+            <!-- Но со вторым заголовком все немного сложнее, так как по макету
+            видим что по бокам от заголовка есть линии, их лучше создавать 
+            при помощи псевдоселекторов, но это расмотрим позже, сделаем пока по другому -->
+            <div class="simple">
+                <h2 class="title_big">это просто!</h2>
+                <div class="line"></div>
+            </div>
+
+            <h2 class="title">Куда сложнее сделать это правильно!</h2>
+            <div class="promo_text">
+                <!-- Весь текст который есть на сайте он не всегда помещается
+                в такой тег как <p>, параграфы конечно встречаются где у нас
+                много текста, и там мы разделяем текст на логические составляющие,
+                вот там мы и используем параграфы. Здес же у нас просто блок
+                и в нем текст.
+                И на макете видим логический переход на другую строку после точки
+                в первом предложении -->
+                Ежедневно в России появляется более 5 000 новых сайтов. <br> 
+                И только единицы из них становятся популярными и приносят ощутимую прибыль.В чем секрет? В чем формула успеха? Узнайте на предстоящем двухдневном <span>БЕСПЛАТНОМ</span> интенсиве!
+            </div>
+
+            <!-- Наша кнопка -->
+            <button class="promo_btn">Записаться на интенсив!</button>
+
+            <div class="more">
+                <div class="more_text">узнать больше об интенсиве</div>
+                <img src="icons/arrow.svg" alt="down" class="more_img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Делаем вторую секцию -->
+    <section class="waiting">
+        <div class="container">
+            <h2 class="waiting_header">ЧТО ВАС ЖДЕТ В НАШЕМ ИНТЕНСИВЕ?</h2>
+            <div class="waiting_divider"></div>
+            <!-- Это желтый разделитель -->
+            <div class="waiting_subheader">2 бесплатных полноценных обучающих вебинара, где:</div>
+
+            <!-- Тут будет большой блок, в котором будет находится три
+            маленьких блока -->
+            <div class="waiting_wrapper">
+                <div class="waiting_item">
+                    <img src="img/waiting_1.png" alt="1" class="waiting_img">
+                    <!-- В alt по хорошему нужно записывать какая это картинка,
+                    на случай если картинка не прогрузилась, но при наведении
+                    будет тот текст который написали -->
+                    <div class="waiting_descr">
+                        Всего за два бесплатных вебинара мы научим вас, как создать свой сайт на WordPress. 
+                    </div>
+                </div>
+                <div class="waiting_item">
+                    <img src="img/waiting_2.png" alt="2" class="waiting_img">
+                    <div class="waiting_descr">
+                        Покажем, как правильно оптимизировать сайт и сделать его привлекательным для поисковых систем. Только свежая, профессиональная и актуальная информация!
+                    </div>
+                </div>
+                <div class="waiting_item">
+                    <img src="img/waiting_3.png" alt="3" class="waiting_img">
+                    <div class="waiting_descr">
+                        Вы узнаете, что такое «хорошая индексация»,
+                        «высокая посещаемость», «стабильный прирост посетителей», «ТОП по запросам» и, что намного важнее, как добиться всех этих показателей!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="my-flex-container">
+
+        <!-- <div class="my-flex-block">item1</div>
+        <div class="my-flex-block">item2</div>
+        <div class="my-flex-block">item3</div>
+        <div class="my-flex-block">item4</div>
+        <div class="my-flex-block">item5</div> -->
+
+        <!-- И если добавить элементов -->
+
+        <!-- <div class="my-flex-block">item1</div>
+        <div class="my-flex-block">item2</div>
+        <div class="my-flex-block">item3</div>
+        <div class="my-flex-block">item4</div>
+        <div class="my-flex-block">item5</div> -->
+
+        <!-- Видим что элементы пытаются вместиться в одну строчку,
+        и конечно не о каком выравнивании и не идет речи -->
+
+
+        <!-- Если нужно поменять порядок -->
+
+        <!-- <div style="order:3" class="my-flex-block">item1</div>
+        <div class="my-flex-block">item2</div>
+        <div style="order:1" class="my-flex-block">item3</div>
+        <div class="my-flex-block">item4</div>
+        <div class="my-flex-block">item5</div> -->
+
+        <!-- Видим что порядок таков item2 item4 item5
+        (ну и вконце идут наши блоки которым прописали order)
+        item 3 item1
+        Почему сперва идут item2 item4 item5, мы order им не прописывали,
+        и у них по умолчанию стоит order:0 -->
+
+        <div style="order:3" class="my-flex-block">item1</div>
+        <div style="order:2" class="my-flex-block">item2</div>
+        <div style="order:1" class="my-flex-block">item3</div>
+        <div style="order:4" class="my-flex-block">item4</div>
+        <div style="order:5" class="my-flex-block">item5</div>
+        <!-- Ну теперь порядок как мы и задумывали 
+        item3 item2 item1 item4 item5 -->
+    </div>
+
+    <div class="waiting"></div>
+</body>
+</html>
