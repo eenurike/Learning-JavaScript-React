@@ -1,0 +1,35 @@
+Классическая задача на вложенные циклы, нужно создать фигуру треугольника при помощи символа *, есть много вариантов решения этой задачи, но расмотрим самую базовою 
+*
+**
+***
+****
+*****
+******
+
+
+
+
+
+
+
+let result = '',
+    lengthOfStar = 6;
+
+for (let i = 0; i < lengthOfStar; i++) {
+  for (let j = 0; j <= i; j++) {
+    result += '*';
+  }
+
+  result += '\n';
+}    
+console.log(result);
+
+Альтернативный способ
+
+let result2 = '',
+    lengthOfStar2 = 6,
+    star = '*';
+
+for (let i = 0; i < lengthOfStar2; i++) {
+  console.log(result2 += star);
+}  
