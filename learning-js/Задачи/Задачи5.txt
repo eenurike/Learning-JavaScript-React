@@ -51,7 +51,7 @@ console.log(data);
 const data = [5, 10, 'Shopping', 20, 'Homework'];
 const result = [];
 
-for (let i = 1; i < data.length; i++) {
+for (let i = 1; i <= data.length; i++) {
   result[i - 1] = data[data.length - i]; 
   // data.length - i делает массив задам наперед
 }
