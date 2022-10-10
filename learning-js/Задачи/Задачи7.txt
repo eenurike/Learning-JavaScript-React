@@ -35,7 +35,32 @@ P.S.S. Это классическая функция-модификатор, к
 
 
 
+1)
+function sayHello(name) {
+  return `Привет ${name}!`;
+}
+console.log(sayHello('Нурике'));
 
+
+let sayHello = function(name) {
+  return `Привет ${name}!`;
+};
+console.log(sayHello('Нурике'));
+
+const sayHello = (name) => `Привет ${name}!`;
+console.log(sayHello('Нурике'));
+
+
+const sayHello = name => `Привет ${name}!`;
+console.log(sayHello('Нурике'));
+
+
+2)
+function returnNeighboringNumbers(num) {
+  return [num - 1, num, num + 1];
+}
+
+console.log(returnNeighboringNumbers(5));
 
 
 3) const getMathResult = function(a, b) {
