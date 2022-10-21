@@ -38,3 +38,26 @@ function done() {
 learnJS('JavaScript', done);
 // И заметь что в аргументе мы не вызываем функцию(не пишим круглые скобки), мы просто туда передали функцию, она выполнется в первой функции callback() это мы именно ее вызываем. Мы ее просто передаем, чтоб она уже в дальнейшем была использована
 // Callback позволяет быть нам уверенным в том что определенный код не начнет исполнение до того момента, пока другой код не завершит свое исполнение
+
+// Передача одного аргумента из функции в другой
+
+function test(a, callback) {
+  let num = 7;
+  let result = num + a;
+  callback(result);
+}
+
+
+// function test2(b) {
+//   let borderWidth = 20;
+//   console.log(`${borderWidth + b}px`);
+// }
+
+// test(5, test2);
+
+// Или
+
+test(5, function(b) {
+  let borderWidth = 20;
+  console.log(`${borderWidth + b}px`);
+});
