@@ -1,35 +1,34 @@
-Классическая задача на вложенные циклы, нужно создать фигуру треугольника при помощи символа *, есть много вариантов решения этой задачи, но расмотрим самую базовою 
-*
-**
-***
-****
-*****
-******
+Что выведет в консоль код?
+
+console.log( NaN || 2 || undefined );
+console.log( NaN && 2 && undefined );
+console.log( 1 && 2 && 3 );
+console.log( !1 && 2 || !3 );
+console.log( 25 || null && !3 );
+console.log( NaN || null || !3 || undefined || 5);
+console.log( NaN || null && !3 && undefined || 5);
+console.log( 5 === 5 && 3 > 1 || 5);
 
 
+Выполняется ли условие?
 
+let hamburger;
+const fries = NaN;
+const cola = 0;
+const nuggets = 2;
+ 
+if (hamburger || cola || fries === 3 || nuggets) {
+   console.log('Done!')
+}
 
+Выполняется ли условие?
 
+let hamburger;
+const fries = NaN;
+const cola = 0;
+const nuggets = 2;
+ 
+if (hamburger && cola || fries === 3 && nuggets) {
+   console.log('Done!')
+}
 
-
-let result = '',
-    lengthOfStar = 6;
-
-for (let i = 0; i < lengthOfStar; i++) {
-  for (let j = 0; j <= i; j++) {
-    result += '*';
-  }
-
-  result += '\n';
-}    
-console.log(result);
-
-Альтернативный способ
-
-let result2 = '',
-    lengthOfStar2 = 6,
-    star = '*';
-
-for (let i = 0; i < lengthOfStar2; i++) {
-  console.log(result2 += star);
-}  
