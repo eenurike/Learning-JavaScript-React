@@ -158,3 +158,13 @@ test: for (let i = 0; i < 3; i++) {
   }
 }
 
+let mainNum = 15;
+
+function testFunk(a, callback) {
+  let result1 = a + mainNum;
+  callback(result1);
+}
+
+testFunk(5, function(b) {
+  console.log(b + 10);
+});

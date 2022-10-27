@@ -48,16 +48,16 @@ function test(a, callback) {
 }
 
 
-// function test2(b) {
-//   let borderWidth = 20;
-//   console.log(`${borderWidth + b}px`);
-// }
+function test2(b) {
+  let borderWidth = 20;
+  console.log(`${borderWidth + b}px`);
+}
 
-// test(5, test2);
+test(5, test2);
 
 // Или
 
-test(5, function(b) {
-  let borderWidth = 20;
-  console.log(`${borderWidth + b}px`);
-});
+// test(5, function(b) {
+//   let borderWidth = 20;
+//   console.log(`${borderWidth + b}px`);
+// });
