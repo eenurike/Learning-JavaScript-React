@@ -1,40 +1,36 @@
 'use strict';
 
-const personalPlanPeter = {
-  name: "Peter",
-  age: "29",
-  skills: {
-      languages: ['ru', 'eng'],
-      programmingLangs: {
-          js: '20%',
-          php: '10%'
-      },
-      exp: '1 month'
-  }
-};
+// function showFamily(family) {
+//   let str = ``;
+//   (family.length === 0) ? str = `Семья пуста`: str += `Семья состоит из: ${family.join(', ')}`;
 
-console.log(typeof(personalPlanPeter.skills.programmingLangs));
+//   return str;
+// }
 
-const showExperience = function(plan) {
-  const {exp} = plan.skills;
-  return exp;
-};
+// let arrayfamily = ['Peter', 'Ann', 'Alex', 'Linda'];
+// let emptyFamily = [];
+// console.log(showFamily(arrayfamily));   
+// console.log(showFamily(emptyFamily));   
 
-console.log(showExperience(personalPlanPeter));
+// function standardizeStrings(favoriteCities) {
+//   favoriteCities.forEach(function(cities) {
+//     console.log(cities.toLowerCase());
+//   });
+// }
 
+// let cities = ['LISOBON', 'ROME', 'MILAN', 'DUBLIN'];
+// console.log(standardizeStrings(cities));
 
-function showProgrammingLangs(plan) {
-  let str = "";
-  const {programmingLangs} = plan.skills;
-  if (Object.keys(programmingLangs).length === 0) {
-    console.log('isEmpty');
-  } else {
-    for (let i in programmingLangs) {
-      str += `Язык ${i} изучен на ${programmingLangs[i]}\n`;
-    }
+let someString = 'This is some strange string';
+let errorString = 123;
+
+function reverse(str) {
+  if(typeof(str) !== 'string') {
+    return 'Ошибка';
   }
 
-  return str;
+  return str.split('').reverse().join('');
 }
 
-console.log(showProgrammingLangs(personalPlanPeter));
+console.log(reverse(someString));
+console.log(reverse(errorString));

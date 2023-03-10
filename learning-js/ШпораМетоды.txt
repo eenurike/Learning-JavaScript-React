@@ -284,6 +284,13 @@ const str4 = ['Nurike', 'Temur', 'Stas', 'Madi'];
 const result = str4.join(' '); // Разделитель пробел
 console.log(result);  // Nurike Temur Stas Madi
 
+let someString = 'This is some strange string';
+let someArr = someString.split('').reverse().join('');
+
+console.log(someArr); // gnirts egnarts emos si sihT
+Смотри тут если split('') join('') записать пустые ковычки, то он каждую букву отдельно отобразит, а если записать ковычки и пробел (' '), то он выведит каждое слово из строки
+reverse() - Массив делает задом наперед
+
 Комбинация методов
 const test = prompt('Введите товары через запятую и пробел', '');
 const products2 = test.split(', '); // яйца, картошка, творог, лимон, хлеб, капуста
