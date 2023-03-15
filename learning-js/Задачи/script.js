@@ -1,36 +1,51 @@
 'use strict';
 
-// function showFamily(family) {
-//   let str = ``;
-//   (family.length === 0) ? str = `Семья пуста`: str += `Семья состоит из: ${family.join(', ')}`;
+const shoppingMallData = {
+  shops: [
+      {
+          width: 10,
+          length: 5
+      },
+      {
+          width: 15,
+          length: 7
+      },
+      {
+          width: 20,
+          length: 5
+      },
+      {
+          width: 8,
+          length: 10
+      }
+  ],
+  height: 5,
+  moneyPer1m3: 30,
+  budget: 50000
+};
 
-//   return str;
-// }
+function isBudgetEnough(data) {
+  let square = 0;
+  let volume = 0;
 
-// let arrayfamily = ['Peter', 'Ann', 'Alex', 'Linda'];
-// let emptyFamily = [];
-// console.log(showFamily(arrayfamily));   
-// console.log(showFamily(emptyFamily));   
+  data.shops.forEach(shop => {
+    square += shop.width * shop.length;
+  });
 
-// function standardizeStrings(favoriteCities) {
-//   favoriteCities.forEach(function(cities) {
-//     console.log(cities.toLowerCase());
-//   });
-// }
+  volume = square * data.height;
 
-// let cities = ['LISOBON', 'ROME', 'MILAN', 'DUBLIN'];
-// console.log(standardizeStrings(cities));
+  let result = data.budget - (volume * data.moneyPer1m3);
 
-let someString = 'This is some strange string';
-let errorString = 123;
-
-function reverse(str) {
-  if(typeof(str) !== 'string') {
-    return 'Ошибка';
+  if (result >= 0) {
+    return 'Бюджета достаточно';
+  } else {
+    return `Бюджета недостаточно \n 
+    Ваш нехватает: ${result}тг`;
   }
-
-  return str.split('').reverse().join('');
+  
 }
 
-console.log(reverse(someString));
-console.log(reverse(errorString));
+console.log(isBudgetEnough(shoppingMallData));
+
+
+
