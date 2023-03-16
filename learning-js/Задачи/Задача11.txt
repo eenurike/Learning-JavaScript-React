@@ -79,12 +79,15 @@ function isBudgetEnougth(data) {
 
   totalSquare = square * (data.heigth * data.moneyPer1m3);
 
-  
-  if (data.budget - totalSquare >= 0) {
+  let putAwayMinus = data.budget - generalSquare;
+
+  if (data.budget - generalSquare >= 0) {
     return 'Бюджета достаточно';
   } else {
     return `Бюджета недостаточно \n
-    Вам нехватает ${data.budget - totalSquare}`;
+    Вам нехватает: ${putAwayMinus < 0 ? putAwayMinus = putAwayMinus * -1: console.log('')}тг`;
+    // Убрали минус у отрицательного числа
+  }
   }
 
   // ИЛИ

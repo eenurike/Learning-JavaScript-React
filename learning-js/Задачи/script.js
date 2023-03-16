@@ -1,51 +1,27 @@
 'use strict';
 
-const shoppingMallData = {
-  shops: [
-      {
-          width: 10,
-          length: 5
-      },
-      {
-          width: 15,
-          length: 7
-      },
-      {
-          width: 20,
-          length: 5
-      },
-      {
-          width: 8,
-          length: 10
-      }
-  ],
-  height: 5,
-  moneyPer1m3: 30,
-  budget: 50000
-};
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', 'Nurike'];
 
-function isBudgetEnough(data) {
-  let square = 0;
-  let volume = 0;
+function sortStudentsByGroups(people) {
+  people.sort();
+  let one = [], two = [], three = [], notFit = [];
 
-  data.shops.forEach(shop => {
-    square += shop.width * shop.length;
-  });
-
-  volume = square * data.height;
-
-  let result = data.budget - (volume * data.moneyPer1m3);
-
-  if (result >= 0) {
-    return 'Бюджета достаточно';
-  } else {
-    return `Бюджета недостаточно \n 
-    Ваш нехватает: ${result}тг`;
-  }
-  
+  for (let i = 0; i < people.length; i++) {
+    if (i < 3) {
+      one.push(people[i]);
+    } else if (i < 6) {
+      two.push(people[i]);
+    } else if (i < 9) {
+      three.push(people[i]);
+    } else {
+      notFit.push(people[i]);
+    }
+  } 
+ 
+  return [one, two, three, `Оставшиеся студенты: ${(notFit.length === 0 ? '-': notFit.join(', '))}`];
 }
 
-console.log(isBudgetEnough(shoppingMallData));
+console.log(sortStudentsByGroups(students));
 
 
 
